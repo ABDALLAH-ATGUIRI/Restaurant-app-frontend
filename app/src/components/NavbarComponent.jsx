@@ -18,12 +18,10 @@ function NavbarComponent() {
         <div onClick={() => { setNav(!nav) }} className='curser-pointer'>
           <BiMenu size={35} />
         </div>
-        <div className={`flex justify-center mx-10 h-14 px-4`}>
+        <div className={`flex justify-center lg:mx-10 sm:mx-6 sm:h-14  px-4`}>
           <img src="./assets/logo.svg/Group 3.svg" alt="Logo" srcset="" />
         </div>
 
-        {/* <h1 className={`text-2xl sm:text-3xl lg:text-4xl px-2`} style={{ color: orange }} >
-        </h1> */}
         <div className='hidden mx-14 lg:flex items-center bg-gray-200 rounded-full p-1 text-[14px]'>
           <p className='bg-black text-white font-bold rounded-full p-2'>
             Delivery
@@ -45,10 +43,9 @@ function NavbarComponent() {
 
       {/**Mobile Menu */}
       {/**Overlay */}
-      {nav ? <div className='bg-black/80 fixed w-full h-screen z-10 top-0 left-0' onClick={() => { setNav(!nav) }}></div> : ''}
-      <div className={nav ? 'flex w-[400px] fixed top-0 left-0 z-10 duration-300' : 'fixed top-0 left-[-100%]'}>
+      <div className={nav ? 'flex w-[400px] fixed top-0 left-0 z-10 delay-150 duration-300 ease-in-out' : 'fixed top-0 left-[-100%] delay-150 duration-300 ease-in-out'}>
         <div className='h-screen w-[300px] bg-white '>
-          <div className={`flex justify-center h-14 m-4`}>
+          <div className={`flex justify-center h-16 m-4`}>
             <img src="./assets/logo.svg/Group 3.svg" alt="Logo" srcset="" />
           </div>
           <nav>
@@ -64,11 +61,10 @@ function NavbarComponent() {
           </nav>
         </div>
         <div className='h-screen'>
-          <BiMenuAltLeft size={40} color="white" onClick={() => { setNav(!nav) }} className="absolute right-4 top-4 cursor-pointer" />
+          <BiMenuAltLeft size={40} color="white" onClick={() => { setNav(!nav) }} className="absolute right-2 top-4 cursor-pointer" />
         </div>
       </div>
-
-
+      {nav ? <div className='bg-black/80 fixed w-full h-screen z-0 top-0 left-0 delay-150 duration-300 ease-in-out' onClick={() => { setNav(!nav) }}></div> : <div className="fixed -z-10 delay-300 duration-400 ease-in-out"></div>}
     </div >
 
 
