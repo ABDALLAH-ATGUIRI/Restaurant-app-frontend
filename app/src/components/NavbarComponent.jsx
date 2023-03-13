@@ -12,7 +12,7 @@ import { orange } from '../utils/colors/global.colors'
 function NavbarComponent() {
   const [nav, setNav] = useState(false)
   return (
-    <div className='mx-auto flex justify-between items-center p-4 px-8'>
+    <div className='mx-auto bg-white w-full flex justify-between items-center p-4 px-8'>
       { }
       <div className='flex items-center'>
         <div onClick={() => { setNav(!nav) }} className='curser-pointer'>
