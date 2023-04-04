@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AuthProvider, { RequireAuth } from "./context/Auth";
+import Index from "./pages/restaurant-management";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,6 +14,7 @@ root.render(
       <AuthProvider>
         <Routes>
           <Route path="*" element={<App />} />
+          <Route path="/restaurant-management" element={<Index />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

@@ -1,23 +1,44 @@
-import logo from "./logo.svg";
 import "./App.css";
-import NavbarComponent from "./components/NavbarComponent";
-import Hero from "./components/Hero";
-import { Banner } from "./components/Banner";
-import { orange } from "./utils/colors/global.colors";
 import styled from "styled-components";
+import { Fragment } from "react";
+import Sidebar from "./layout/sidebar";
+import { Outlet, Route, Routes } from "react-router-dom";
+import { Home } from "./pages/Home";
+import Header from "./layout/header";
 
 function App() {
   return (
+    <Fragment>
+      <AppWithStore>
+        <Routes>
+          <Route path="/" element={<Outlet />}>
+            <Route path="/" element={<Home />} />
+          </Route>
+        </Routes>
+      </AppWithStore>
+    </Fragment>
+  );
+}
+
+function AppWithStore({ children }) {
+  return (
     <div className="App">
+
       <Container>
-        <NavbarComponent />
-        <Hero />
-        <Banner />
+        <div className="w-full duration-300 ease-in-out font-sans text-gray-900 flex">
+          <Sidebar />
+          <div className="w-full flex-col">
+            <Header />
+            <div className="overscroll-auto  ">
+              {children}
+            </div>
+            {/* <Footer /> */}
+          </div>
+        </div>
       </Container>
     </div>
   );
 }
-
 
 const Container = styled.div`
 height: 100vh;
@@ -27,7 +48,6 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: space-between;
-background-color: ${orange};
 `
 
 export default App;

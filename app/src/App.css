@@ -1,11 +1,10 @@
 .App {
   height: 100vh;
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   overflow-y: auto;
   scroll-behavior: smooth;
   color: white;
-  background-color: #282c34;}
+}
 .App::-webkit-scrollbar {
   display: none;
 }
