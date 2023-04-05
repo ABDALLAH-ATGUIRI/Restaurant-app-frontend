@@ -1,11 +1,13 @@
 import React, { Fragment } from 'react'
-import Hero from '../components/Hero'
+import Intro from '../components/sections.home/Intro'
+import OurService from '../components/sections.home/OurService'
 
 export const Home = () => {
     return (
         <Fragment>
-            <div className="flex flex-col items-center justify-center h-screen">
-                <Hero/>
+            <div className="flex flex-col items-center justify-center">
+                <Intro/>
+                <OurService/>
             </div>
         </Fragment>
     )

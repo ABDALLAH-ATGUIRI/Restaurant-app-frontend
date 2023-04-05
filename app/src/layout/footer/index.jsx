@@ -1,28 +1,49 @@
 import React from 'react'
+import Logo from '../../assets/Logo.svg/white-logo.svg'
+import { CgFacebook } from 'react-icons/cg'
+import { AiFillInstagram, AiOutlineTwitter } from 'react-icons/ai'
+import { lightGray } from '../../utils/colors'
+import { TiSocialGithub } from 'react-icons/ti'
 
-export const Footer = () => {
+const Footer = () => {
     return (
 
-        <footer class=" bg-white  w-[86%]  absolute -bottom-16 shadow dark:bg-gray-800">
-            <div class=" container md:p-6 p-4 md:flex md:items-center md:justify-between">
-                <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
-                </span>
-                <ul class="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+        <footer className=" bg-white shadow pb-10 p-6 h-[60vh] w-full" style={{ backgroundColor: lightGray }}>
+            <div className=" flex  md:p-10 p-4 md:flex-col md:items-center md:justify-between h-full w-full text-gray-400 dark:text-gray-400 ">
+                <div>
+                    <a href="#" >
+                        <img src={Logo} alt="Logo" className="h-32 w-full mr-2" />
+                    </a>
+                </div>
+
+                <div className="flex items-center justify-between mt-4 md:mt-0 w-1/5">
+                    <a href="#" className="p-2 border-2 rounded-full hover:text-yellow-400 hover:border-yellow-400"><CgFacebook size={30} /></a>
+                    <a href="#" className="p-2 border-2 rounded-full hover:text-yellow-400 hover:border-yellow-400"><AiOutlineTwitter size={30} /></a>
+                    <a href="#" className="p-2 border-2 rounded-full hover:text-yellow-400 hover:border-yellow-400"><AiFillInstagram size={30} /></a>
+                    <a href="#" className="p-1 border-2 rounded-full hover:text-yellow-400 hover:border-yellow-400"><TiSocialGithub size={40} /></a>
+
+                </div>
+
+                <ul className="flex items-center justify-between text-light text-xl w-1/3  sm:mt-0">
                     <li>
-                        <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
+                        <a href="#" className="mr-4 hover:underline md:mr-6 hover:text-yellow-400 ">Menu</a>
                     </li>
                     <li>
-                        <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+                        <a href="#" className="mr-4 hover:underline md:mr-6 hover:text-yellow-400">Events</a>
                     </li>
                     <li>
-                        <a href="#" class="mr-4 hover:underline md:mr-6">Licensing</a>
+                        <a href="#" className="mr-4 hover:underline md:mr-6 hover:text-yellow-400">News</a>
                     </li>
                     <li>
-                        <a href="#" class="hover:underline">Contact</a>
+                        <a href="#" className="mr-4 hover:underline hover:text-yellow-400">Contact</a>
                     </li>
                 </ul>
+
+                <span className="text-xl font-light sm:text-center  bottom-0 mt-10">© 2023 <a href="https://flowbite.com/" className="hover:underline">By ABDALLAH ATGUIRI</a> . All Rights Reserved.</span>
             </div>
         </footer>
 
     )
 }
+
+export default Footer
