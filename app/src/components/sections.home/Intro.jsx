@@ -7,7 +7,7 @@ import { HiOutlineExternalLink } from 'react-icons/hi'
 const index = () => {
     return (
         <Fragment>
-            <div className='mx-auto w-full flex justify-between items-center h-screen'>
+            <div className='mx-auto w-full flex justify-between items-center h-[91vh]'>
                 <div className='mx-auto w-full flex flex-col justify-center font-sans items-start h-screen bg-cover absolute top-0 -z-10 ' style={{ backgroundImage: `url(${FirstBg})` }}>
                 </div>
                 <div className='absolute xl:w-1/2 w-full h-screen left-0 top-0 flex flex-col justify-center items-center'>
