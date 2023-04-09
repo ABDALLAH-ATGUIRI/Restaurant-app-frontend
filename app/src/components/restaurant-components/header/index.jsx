@@ -14,14 +14,14 @@ const Index = ({ title, user }) => {
                 </div>
                 <div className="relative ml-3">
                     <div>
-                        <button type="button" className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true" onClick={()=>{setOpen(!open)}} >
-                            <span className="sr-only">Open user menu</span>
-                            <img className="h-12 w-12 rounded-full" src={user.image} alt="" />
+                        <button type="button" className="flex  justify-center items-center gap-2 " id="user-menu-button" aria-expanded="false" aria-haspopup="true" onClick={() => { setOpen(!open) }} >
+                            <span className=" md:block hidden text-md text-white font-semibold">{user.firstName} {user.lastName}</span>
+                            <img className="h-12 w-12 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" src={user.image} alt="" />
                         </button>
                     </div>
 
 
-                    <div className="absolute right-0 -left-16 z-10 mt-6 w-40 origin-top-left rounded-md bg-white text-red-600 p-2 font-semibold text-center shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" hidden={open} role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                    <div className="absolute right-0  z-10 mt-6 w-40 origin-top-left rounded-md bg-white text-red-600 p-2 font-semibold text-center shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" hidden={open} role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                         <Link className="dropdown-item" to="/" onClick={() => {
                             localStorage.clear("token");
                             logout();

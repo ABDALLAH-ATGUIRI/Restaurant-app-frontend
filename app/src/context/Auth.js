@@ -1,74 +1,89 @@
 import React, { useState, createContext, useEffect, useContext } from "react";
 import { useLocation, Navigate, Outlet } from "react-router-dom";
-import axios from "axios";
 import jwt_decode from "jwt-decode";
+import { instance } from "../utils/api/axios";
 export const AuthContext = createContext();
 
 function AuthProvider(props) {
-	const [auth, setAuth] = useState({});
+  const [auth, setAuth] = useState({});
 
-	console.log(auth);
+  const login = async () => {
+    const token = localStorage.getItem("token");
+    const decoded = jwt_decode(token);
 
-	async function login() {
-		const token = localStorage.getItem("token");
+    if (token) {
+      const {
+        data: { success }
+      } = await instance.get("/auth/token/" + decoded.id, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
 
-		if (token) {
-			const {
-				data: { success },
-			} = await axios.get(`${process.env.REACT_APP_API_URL}/auth/token`, {
-				headers: { Authorization: `Bearer ${token}` },
-			});
+      if (success) {
+        setAuth(() => ({
+          token: token,
+          user: decoded,
+          id: decoded?.id,
+          role: decoded?.role
+        }));
+        console.log("auth", auth)
+      } else {
+        logout();
+      }
+    } else {
+      logout();
+    }
+  };
 
-			if (success) {
-				const decoded = jwt_decode(token);
-				setAuth((init) => ({
-					// ...init,
-					token,
-					id: decoded?.id,
-					type: decoded?.type,
-				}));
-			} else {
-				logout();
-			}
-		} else {
-			logout();
-		}
-	}
+  const logout = () => {
+    setAuth({});
+    localStorage.clear();
+  };
 
-	const logout = () => {
-		setAuth({});
-		localStorage.clear();
-	};
+  useEffect(() => {
+    login();
+  }, []);
 
-	useEffect(() => {
-		login();
-	}, []);
-
-	return (
-		<AuthContext.Provider value={{ auth, setAuth, logout }}>
-			{props.children}
-		</AuthContext.Provider>
-	);
+  return (
+    <AuthContext.Provider value={{ auth, setAuth, logout }}>
+      {props.children}
+    </AuthContext.Provider>
+  );
 }
 
 /**
  * in general cases I dont need to check the local storage
  */
 export const RequireAuth = () => {
-	const { auth } = useContext(AuthContext);
-	const [loading, setloading] = useState(true);
+  const { auth } = useContext(AuthContext);
+  const [loading, setLoading] = useState(true);
 
-	const location = useLocation();
+  const location = useLocation();
 
-	useEffect(() => {
-		if (auth?.token !== "") setloading(false);
-	}, [loading, auth]);
+  useEffect(() => {
+    if (auth?.token !== "" && auth?.role !== "user") setLoading(false);
+  }, [loading, auth]);
 
-	return auth?.token ? (
-		<Outlet />
-	) : (
-		<Navigate to="/" state={{ from: location }} replace />
-	);
+  return auth?.token && auth?.role === "user" ? (
+    <Outlet />
+  ) : (
+    <Navigate to="/" state={{ from: location }} replace />
+  );
+};
+
+export const RequireAuthAdmin = () => {
+  const { auth } = useContext(AuthContext);
+  const [loading, setLoading] = useState(true);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (auth?.token !== "" && auth?.role !== "admin") setLoading(false);
+  }, [loading, auth]);
+
+  return auth?.token && auth?.role === "admin" ? (
+    <Outlet />
+  ) : (
+    <Navigate to="/" state={{ from: location }} replace />
+  );
 };
 
 export default AuthProvider;

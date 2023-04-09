@@ -2,11 +2,12 @@ import React, { createRef, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 export const DashboardButton = ({ menuItem }) => {
-    const id = window.location.href.split('/').pop();
+    const id = window.location.href.split('/').pop()[2];
     const [activeButton, setActiveButton] = useState("");
 
     const isActiveButton = () => {
         const isActive = id == menuItem.path?.split('/').pop();
+
         return isActive ? setActiveButton("active") : setActiveButton("")
     }
     useEffect(() => { isActiveButton() }, [id])

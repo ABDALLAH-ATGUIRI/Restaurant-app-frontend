@@ -49,7 +49,7 @@ transition: all 0.3s ease-in-out;
 
     return (
         <Fragment>
-            <Container className={`xl:w-[18%] lg:w-[30%] sm:w-[45%]  text-white p-10 bg-gradient-to-r  rounded-3xl relative`} >
+            <Container className={`xl:w-[18%] [1280px]:w-1/3 lg:w-[30%] sm:w-[45%]  text-white p-10 bg-gradient-to-r  rounded-3xl relative`} >
                 <div className='relative w-full h-32'>
                     <SmallImg src={image} alt="Hero" srcset="" />
                 </div>

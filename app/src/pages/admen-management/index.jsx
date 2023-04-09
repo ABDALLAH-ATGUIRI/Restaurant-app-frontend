@@ -7,9 +7,13 @@ import { lightGray } from "../../utils/colors";
 import Header from "../../components/restaurant-components/header";
 import { Home } from "./Home";
 import { AuthContext } from "../../context/Auth";
-import { MENUITEMS } from "./appendix/menu-items";
+import { MENUITEMS } from './appendix/menu-items';
+import Restaurants from "./Restaurants";
+import RestaurantProfile from "./RestaurantProfile";
+
 
 function Index() {
+
 
     return (
         <Fragment>
@@ -17,7 +21,10 @@ function Index() {
                 <Routes>
                     <Route path="/" element={<Outlet />}>
                         <Route path="/" element={<Home />} />
-                        <Route path="dashboard" element={<Dashboard />} />
+                        <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/restaurant" element={<Restaurants />} />
+                        <Route path="/restaurant/*" element={<RestaurantProfile />} />
+
                     </Route>
                 </Routes>
             </AppWithStore>
@@ -28,21 +35,20 @@ function Index() {
 function AppWithStore({ children }) {
     const { auth } = useContext(AuthContext);
     const { user } = auth;
-
     return (
         <div className="App">
 
             <Container>
                 <div className="w-full duration-300 ease-in-out font-sans text-gray-900 flex" >
                     <Sidebar MenuItems={MENUITEMS} />
-                    <div className="w-full flex-col" style={{ backgroundColor: lightGray }}>
+                    <div className="w-full flex-col ml-1" style={{ backgroundColor: lightGray }}>
                         <Header title={"menu Category"} user={user} />
+
                         {children}
                         {/* <Footer /> */}
                     </div>
                 </div>
             </Container>
-
         </div>
     );
 }

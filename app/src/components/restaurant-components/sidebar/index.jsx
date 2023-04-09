@@ -1,15 +1,11 @@
 import { Fragment, useEffect, useState } from "react";
 // import SmallLogo from "../../assets/images/small-logo-wselect.png";
-import { MENUITEMS } from './menu';
-import { Link } from "react-router-dom";
-import { BiMenuAltLeft } from "react-icons/bi";
-import { DropdownButton } from "../../global/DropdownButton";
 import { lightGray } from "../../../utils/colors";
 import { DashboardButton } from "../../global/DashboardButton";
 
 
 
-const Sidebar = () => {
+const Sidebar = ({ MenuItems }) => {
   const id = window.location.href.split('/').pop();
   const [open, setOpen] = useState(false);
 
@@ -26,7 +22,7 @@ const Sidebar = () => {
 
           <ul className="h-full relative flex items-center justify-around"  >
             {/* {!open && <span className={` p-4`}></span>} */}
-            {MENUITEMS.map((Menu, index) => (
+            {MenuItems.map((Menu, index) => (
               <Fragment key={index} >
                 <div className="  text-white h-1/2 flex flex-col justify-between">
                   {
@@ -37,6 +33,7 @@ const Sidebar = () => {
                         className={`relative flex justify-center rounded-lg p-2 border-none cursor-pointer font-semibold shadow-inner shadow-slate-50/10 hover:bg-orange-500  focus:bg-orange-500 text-white text-sm items-center`}
                         key={i}
                       >
+
                         <DashboardButton menuItem={menuItem} index={i} open={open} />
                       </li>
                     )

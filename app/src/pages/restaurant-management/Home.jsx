@@ -56,7 +56,6 @@ export const Home = () => {
     const [user, setUser] = React.useState({ name: "Abdallah Atguiri", image: "./assets/users/user-1.png" })
     return (
         <Fragment>
-            <Header title={"menu Category"} user={user} />
             <div className='w-full p-10 font-bold flex flex-wrap gap-10 justify-between first-letter:uppercase text-3xl text-white'>
                 {CATEGORYITEMS.map((item, index) => {
                     if (index === 0) {

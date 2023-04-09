@@ -10,8 +10,8 @@ const index = () => {
             <div className='mx-auto w-full flex justify-between items-center h-[91vh]'>
                 <div className='mx-auto w-full flex flex-col justify-center font-sans items-start h-screen bg-cover absolute top-0 -z-10 ' style={{ backgroundImage: `url(${FirstBg})` }}>
                 </div>
-                <div className='absolute xl:w-1/2 w-full h-screen left-0 top-0 flex flex-col justify-center items-center'>
-                    <div className='flex flex-col justify-between h-1/3 items-start m-16  gap-6'>
+                <div className='xl:w-1/2 w-full left-0 top-0 flex flex-col justify-center items-center'>
+                    <div className='flex flex-col justify-between h-1/3 items-start m-16 mt-20  gap-6'>
                         <div className='flex flex-col justify-between'>
                             <h1 className=' font-bold lg:text-6xl text-5xl text-yellow-400 pb-4'>Welcome to ALLO CHEF</h1>
                             <p className='text-white  lg:text-3xl text-3xl tracking-wider font-normal '>Fresh Ingredients, Delicious Meals, Easy Delivery </p>
