@@ -12,7 +12,7 @@ const HeaderTable = ({ setShowDialog, target, children }) => {
       </div>
       <button
         onClick={() => setShowDialog(true)}
-        className="inline-flex gap-x-2 items-center py-2.5 px-6 text-white bg-teal-600 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-1"
+        className="inline-flex gap-x-2 items-center py-2 px-6 text-white bg-orange-500 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-1"
       >
         <GoPlus size={20} className="w-6  h-6 fill-current text-white" />
         <span className="text-sm font-semibold tracking-wide">

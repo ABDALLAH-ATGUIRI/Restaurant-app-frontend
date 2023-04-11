@@ -27,8 +27,8 @@ function Index() {
 
                         {/* Restaurant routes */}
                         <Route path="/restaurant" element={<Restaurants />} />
-                        <Route path="/restaurant/menu" element={<CategoriesMenu />} />
-                        <Route path="/restaurant/*" element={<RestaurantProfile />} />
+                        <Route path="/restaurant/:id/menu" element={<CategoriesMenu />} />
+                        <Route path="/restaurant/:id" element={<RestaurantProfile />} />
 
                     </Route>
                 </Routes>

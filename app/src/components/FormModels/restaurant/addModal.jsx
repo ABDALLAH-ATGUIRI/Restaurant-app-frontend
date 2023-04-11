@@ -18,7 +18,8 @@ const AddModal = ({ setTableList, showDialog, setShowDialog, target }) => {
         setFormSchema({ ...formSchema, location: coordinates, menu: [] });
 
         return await instance.post(target, formSchema).then((res) => {
-          if (res.data.success) {
+          console.log(res);
+          if (res.status == 201) {
             toast.dismiss();
             toast.success("All is good");
             setFormSchema({});
@@ -173,8 +174,8 @@ const AddModal = ({ setTableList, showDialog, setShowDialog, target }) => {
                 <span className="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
                   <button
                     onClick={() => {
-                      close();
                       setFormSchema({});
+                      close();
                     }}
                     className="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                   >
@@ -182,7 +183,7 @@ const AddModal = ({ setTableList, showDialog, setShowDialog, target }) => {
                   </button>
                   <span className="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
                     <button
-                      onClick={handleModalSubmit}
+                      onClick={() => handleModalSubmit()}
                       type="submit"
                       className="inline-flex justify-center w-max rounded-md border border-transparent px-4 py-2 bg-teal-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-teal-500 focus:outline-none focus:border-teal-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                     >

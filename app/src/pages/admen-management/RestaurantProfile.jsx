@@ -12,18 +12,14 @@ import { HiOutlineExternalLink } from 'react-icons/hi';
 
 const RestaurantProfile = () => {
     const target = window.location.pathname.split("/")[2].toLowerCase();
-    const token = localStorage.getItem("token");
     const { "*": RestaurantId } = useParams();
-    const [open, setOpen] = useState(false);
     const [restaurant, setRestaurant] = useState({});
 
 
     // get data one restaurant by id
     const fetchTable = async () => {
         try {
-            await instance.get(`${target}/${RestaurantId}`, {
-                headers: { Authorization: `Bearer ${token}` }
-            }).then((res) => {
+            await instance.get(`${RestaurantId}`).then((res) => {
                 setRestaurant(res.data);
             }).catch((err) => {
                 console.error(err);
@@ -85,7 +81,7 @@ const RestaurantProfile = () => {
                         </div>
                         <div className="w-full mx-2 h-64">
                             <div className="bg-white text-lg w-full h-full border-t-4 border-orange-400">
-                                <EditModal tableList={restaurant} setTableList={setRestaurant} target={target} />
+                                <EditModal restaurant={restaurant} setTableList={setRestaurant} target={target} />
                             </div>
                         </div>
                     </div>

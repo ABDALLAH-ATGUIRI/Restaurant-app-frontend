@@ -78,4 +78,4 @@ const CategoriesMenu = () => {
         </Fragment>)
 }
 
-export default CategoriesMenu()
+export default CategoriesMenu

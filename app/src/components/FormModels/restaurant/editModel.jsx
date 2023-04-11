@@ -5,9 +5,10 @@ import toast from "react-hot-toast";
 import { instance } from "../../../utils/api/axios";
 import MyMap from "../../global/MyMap";
 
-const EditModal = ({ tableList, setRestaurant, target }) => {
+const EditModal = ({ restaurant, setRestaurant, target }) => {
   const [formSchema, setFormSchema] = useState({});
-  const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
+  const [coordinates, setCoordinates] = useState(restaurant.location);
+
 
 
   const handleModalSubmit = useMemo(() => {
@@ -62,7 +63,7 @@ const EditModal = ({ tableList, setRestaurant, target }) => {
                 </span>
                 <input
                   onChange={handleFormChange}
-                  value={values?.restaurantName || ""}
+                  value={restaurant?.restaurantName || ""}
                   placeholder="ALLO CHEF"
                   type="text"
                   name="restaurantName"
@@ -83,7 +84,7 @@ const EditModal = ({ tableList, setRestaurant, target }) => {
                 <select
                   id={94}
                   name="specialty"
-                  value={values?.specialty || "DEFAULT"}
+                  value={restaurant?.specialty || "DEFAULT"}
                   onChange={handleFormChange}
                   className="w-full border border-gray-100 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-teal-200 focus:ring-1 focus:ring-teal-200"
                   aria-label="Default select example"
@@ -113,7 +114,7 @@ const EditModal = ({ tableList, setRestaurant, target }) => {
 
                 <input
                   onChange={handleFormChange}
-                  value={values?.phone || ""}
+                  value={restaurant?.phone || ""}
                   placeholder="+212623779270"
                   // type="tel"
                   type="text"
@@ -136,7 +137,7 @@ const EditModal = ({ tableList, setRestaurant, target }) => {
 
                 <input
                   onChange={handleFormChange}
-                  value={values?.description || ""}
+                  value={restaurant?.description || ""}
                   placeholder="Last name"
                   type="text"
                   name="description"
