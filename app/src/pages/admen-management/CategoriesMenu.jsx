@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import Header from '../../components/restaurant-components/header'
 import { HeroCategory, SmallCategory } from '../../components/restaurant-components/components-food'
 
 const CATEGORYITEMS = [
@@ -51,9 +50,7 @@ const CATEGORYITEMS = [
 
 ]
 
-
-export const Home = () => {
-    const [user, setUser] = React.useState({ name: "Abdallah Atguiri", image: "./assets/users/user-1.png" })
+const CategoriesMenu = () => {
     return (
         <Fragment>
             <div className='w-full p-10 font-bold flex flex-wrap gap-10 justify-between first-letter:uppercase text-3xl text-white'>
@@ -80,3 +77,5 @@ export const Home = () => {
             </div>
         </Fragment>)
 }
+
+export default CategoriesMenu()

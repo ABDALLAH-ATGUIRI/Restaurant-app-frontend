@@ -5,7 +5,7 @@ import Dashboard from "./Dashboard";
 import Sidebar from "../../components/restaurant-components/sidebar";
 import { lightGray } from "../../utils/colors";
 import Header from "../../components/restaurant-components/header";
-import { Home } from "./Home";
+import CategoriesMenu from "../admen-management/CategoriesMenu";
 import { AuthContext } from "../../context/Auth";
 import { MENUITEMS } from "./appendix/menu-items";
 
@@ -16,7 +16,7 @@ function Index() {
             <AppWithStore>
                 <Routes>
                     <Route path="/" element={<Outlet />}>
-                        <Route path="/" element={<Home />} />
+                        <Route path="/" element={<CategoriesMenu />} />
                         <Route path="dashboard" element={<Dashboard />} />
                     </Route>
                 </Routes>

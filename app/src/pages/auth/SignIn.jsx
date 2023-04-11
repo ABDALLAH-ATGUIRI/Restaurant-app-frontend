@@ -89,7 +89,7 @@ export const SignIn = () => {
                             <form className="w-11/12">
                                 <div className="lg:flex w-full gap-3">
                                     <div className="mb-8  w-full">
-                                        <label className="block text-gray-700 text-sm font-bold mb-2" for="firstName">First Name</label>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstName">First Name</label>
                                         <input
                                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
                                             name="firstName"
@@ -100,7 +100,7 @@ export const SignIn = () => {
                                             placeholder="Entrez Votre Nom" />
                                     </div>
                                     <div className=" mb-8  w-full">
-                                        <label className="block text-gray-700 text-sm font-bold mb-2" for="lastName">Last Name</label>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastName">Last Name</label>
                                         <input
                                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
                                             name="lastName"
@@ -114,7 +114,7 @@ export const SignIn = () => {
                                 </div>
 
                                 <div className="mb-8">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" for="Phone">Phone</label>
+                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="Phone">Phone</label>
                                     <input className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
                                         name="phone"
                                         value={form?.phone}
@@ -126,7 +126,7 @@ export const SignIn = () => {
                                 </div>
 
                                 <div className="mb-8">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
+                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email</label>
                                     <input
                                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
                                         name="email"
@@ -139,7 +139,7 @@ export const SignIn = () => {
                                 </div>
 
                                 <div className="mb-8">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
+                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">Password</label>
                                     <input className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
                                         name="password"
                                         value={form?.password}
@@ -151,7 +151,7 @@ export const SignIn = () => {
                                     />
                                 </div>
                                 <div className="mb-8">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" for="confirmPassword">Confirm Password</label>
+                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="confirmPassword">Confirm Password</label>
                                     <input className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
                                         type="password"
                                         id="confirmPassword"

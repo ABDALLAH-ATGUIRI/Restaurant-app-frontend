@@ -1,12 +1,14 @@
 import React, { Fragment, useEffect, useMemo, useState } from "react";
-import axios from "axios";
 import useForm from "../../../utils/lib/useForm";
 import validate from "../../../utils/validators/leadFormValidator";
 import toast from "react-hot-toast";
 import { instance } from "../../../utils/api/axios";
+import MyMap from "../../global/MyMap";
 
-const EditModal = ({ setTableList, target }) => {
+const EditModal = ({ tableList, setRestaurant, target }) => {
   const [formSchema, setFormSchema] = useState({});
+  const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
+
 
   const handleModalSubmit = useMemo(() => {
     return async () => {
@@ -18,17 +20,16 @@ const EditModal = ({ setTableList, target }) => {
             setFormSchema({});
             // submit();
           }
-        })
-          .catch((err) => {
-            toast.dismiss();
-            toast.error("Something went wrong");
-          });
+        }).catch((err) => {
+          toast.dismiss();
+          toast.error("Something went wrong");
+        });
       } catch (error) {
         toast.dismiss();
         toast.error("Something went wrong");
       }
     };
-  }, [formSchema, setFormSchema, setTableList, target]);
+  }, [formSchema, setFormSchema, setRestaurant, target]);
 
   const {
     handleSubmit,
@@ -45,14 +46,12 @@ const EditModal = ({ setTableList, target }) => {
 
   return (
     <Fragment>
-      <div className=" w-full h-full z-20 flex justify-center items-start">
-        <div className="bg-white lg:w-4/6 md:5/6 w-full p-12 ">
+      <div className=" w-full h-full z-20 flex text-gray-500 justify-center items-start">
+        <div className="bg-white w-full p-8 ">
           <div className="flex justify-between">
             <div className="space-y-1 pb-10">
-              <h2 className="font-bold text-gray-900">Add a New {target}</h2>
-              {/* <p className="text-sm font-medium leading-5 text-gray-500">
-                <em>Please fill out all inputs.</em>
-              </p> */}
+              <h2 className="text-xl font-bold text-gray-900">Edit {target}</h2>
+
             </div>
           </div>
           <form onSubmit={handleSubmit}>
@@ -89,13 +88,14 @@ const EditModal = ({ setTableList, target }) => {
                   className="w-full border border-gray-100 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-teal-200 focus:ring-1 focus:ring-teal-200"
                   aria-label="Default select example"
                 >
-                  <option value="DEFAULT" disabled>
-                    select specialty
-                  </option>
-                  <option value="fail">Insuffisant</option>
-                  <option value="pass"> Passable</option>
-                  <option value="good">Bien</option>
-                  <option value="verygood">Très bien</option>
+                  <option value="DEFAULT" disabled>Specialty</option>
+                  <option value="fast food">fast food</option>
+                  <option value="Family style"> Family style</option>
+                  <option value="Coffee">Coffee</option>
+                  <option value="Bars & Pubs">Bars & Pubs</option>
+                  <option value="Buffet">Buffet</option>
+                  <option value="Destination Restaurant">Destination Restaurant</option>
+                  <option value="Baledi">Baledi</option>
                 </select>
                 {errors?.status && (
                   <span className="text-xs text-red-500">
@@ -114,7 +114,7 @@ const EditModal = ({ setTableList, target }) => {
                 <input
                   onChange={handleFormChange}
                   value={values?.phone || ""}
-                  placeholder="123-456-789"
+                  placeholder="+212623779270"
                   // type="tel"
                   type="text"
                   name="phone"
@@ -151,24 +151,36 @@ const EditModal = ({ setTableList, target }) => {
               </label>
             </div>
 
+
+            <div className="mb-5">
+              <label className="block space-y-2">
+                <span className="block text-xs font-bold leading-4 tracking-wide uppercase text-gray-600">
+                  Location
+                </span>
+
+                <div className="flex relative flex-col w-full h-96 ">
+                  <MyMap setCoordinates={setCoordinates} coordinates={coordinates} />
+                </div>
+
+                {errors?.lastName && (
+                  <span className="text-xs text-red-500">
+                    {errors?.lastName}
+                  </span>
+                )}
+              </label>
+            </div>
+
             <div className="sm:flex sm:flex-row-reverse">
               <span className="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-                <button
-                  onClick={() => {
-                    setFormSchema({});
-                  }}
-                  className="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline transition ease-in-out duration-150 sm:text-sm sm:leading-5"
-                >
-                  Cancel
-                </button>
                 <span className="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
                   <button
                     onClick={handleModalSubmit}
                     type="submit"
-                    className="inline-flex justify-center w-max rounded-md border border-transparent px-4 py-2 bg-teal-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-teal-500 focus:outline-none focus:border-teal-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+                    className="w-full mt-6 bg-orange-500 text-white text-sm font-bold py-2 px-4 rounded-md hover:bg-orange-600 transition duration-300"
                   >
-                    Add {target}
+                    Edit {target}
                   </button>
+
                 </span>
               </span>
             </div>

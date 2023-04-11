@@ -4,14 +4,19 @@ import useForm from "../../../utils/lib/useForm";
 import validate from "../../../utils/validators/leadFormValidator";
 import toast from "react-hot-toast";
 import { instance } from "../../../utils/api/axios";
+import MyMap from "../../global/MyMap";
 
 const AddModal = ({ setTableList, showDialog, setShowDialog, target }) => {
   const close = () => setShowDialog(false);
   const [formSchema, setFormSchema] = useState({});
+  const [coordinates, setCoordinates] = useState({ latitude: 33.60, longitude: -7.63 });
 
   const handleModalSubmit = useMemo(() => {
+
     return async () => {
       try {
+        setFormSchema({ ...formSchema, location: coordinates, menu: [] });
+
         return await instance.post(target, formSchema).then((res) => {
           if (res.data.success) {
             toast.dismiss();
@@ -36,21 +41,18 @@ const AddModal = ({ setTableList, showDialog, setShowDialog, target }) => {
     handleSubmit,
     handleChange: handleFormChange,
     values,
-    errors
+    errors,
   } = useForm(handleModalSubmit, validate, formSchema, setFormSchema);
 
-  const [file, setFile] = useState();
 
-  const saveFile = (e) => {
-    setFile(e.target.files[0]);
-  };
+
 
   return (
     showDialog && (
       <Fragment>
         <div className="bg-black/30  top-0 absolute w-full h-full z-10 pointer"></div>
         <div className="absolute w-full h-full z-20 flex justify-center items-start">
-          <div className="bg-white lg:w-4/6 md:5/6 w-full p-12 ">
+          <div className="bg-white lg:w-4/6 md:5/6 w-full p-10 ">
             <div className="flex justify-between">
               <div className="space-y-1 pb-10">
                 <h2 className="font-bold text-gray-900">Add a New {target}</h2>
@@ -93,13 +95,14 @@ const AddModal = ({ setTableList, showDialog, setShowDialog, target }) => {
                     className="w-full border border-gray-100 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-teal-200 focus:ring-1 focus:ring-teal-200"
                     aria-label="Default select example"
                   >
-                    <option value="DEFAULT" disabled>
-                      select specialty
-                    </option>
-                    <option value="fail">Insuffisant</option>
-                    <option value="pass"> Passable</option>
-                    <option value="good">Bien</option>
-                    <option value="verygood">Très bien</option>
+                    <option value="DEFAULT" disabled>Specialty</option>
+                    <option value="fast food">fast food</option>
+                    <option value="Family style"> Family style</option>
+                    <option value="Coffee">Coffee</option>
+                    <option value="Bars & Pubs">Bars & Pubs</option>
+                    <option value="Buffet">Buffet</option>
+                    <option value="Destination Restaurant">Destination Restaurant</option>
+                    <option value="Baledi">Baledi</option>
                   </select>
                   {errors?.status && (
                     <span className="text-xs text-red-500">
@@ -144,7 +147,7 @@ const AddModal = ({ setTableList, showDialog, setShowDialog, target }) => {
                     placeholder="Last name"
                     type="text"
                     name="description"
-                    maxLength={50}
+                    maxLength={100}
                     className="w-full border border-gray-100 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-teal-200 focus:ring-1 focus:ring-teal-200"
                   />
                   {errors?.lastName && (
@@ -155,7 +158,18 @@ const AddModal = ({ setTableList, showDialog, setShowDialog, target }) => {
                 </label>
               </div>
 
-              <div className="sm:flex sm:flex-row-reverse">
+              <div className="mb-5">
+                <label className="block space-y-2">
+                  <span className="block text-xs font-bold leading-4 tracking-wide uppercase text-gray-600">
+                    Location
+                  </span>
+                  <div className="flex relative flex-col w-full h-96 ">
+                    <MyMap setCoordinates={setCoordinates} coordinates={coordinates} />
+                  </div>
+                </label>
+              </div>
+
+              <div className="sm:flex sm:flex-row-reverse mt-16">
                 <span className="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
                   <button
                     onClick={() => {

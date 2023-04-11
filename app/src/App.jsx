@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Fragment } from "react";
+import { Fragment, Suspense } from "react";
 import Sidebar from "./layout/sidebar";
 import { Outlet, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
@@ -9,13 +9,15 @@ import Footer from "./layout/footer";
 function App() {
   return (
     <Fragment>
-      <AppWithStore>
-        <Routes>
-          <Route path="/" element={<Outlet />}>
-            <Route path="/" element={<Home />} />
-          </Route>
-        </Routes>
-      </AppWithStore>
+      <Suspense fallback={<div>Loading...</div>}>
+        <AppWithStore>
+          <Routes>
+            <Route path="/" element={<Outlet />}>
+              <Route path="/" element={<Home />} />
+            </Route>
+          </Routes>
+        </AppWithStore>
+      </Suspense>
     </Fragment>
   );
 }

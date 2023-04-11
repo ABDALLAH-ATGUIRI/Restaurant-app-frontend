@@ -15,7 +15,6 @@ const Table = ({ manualPagination = true, target = null }) => {
   // If you want to render the table with a specific path name, you can pass it as a prop
   const reference =
     target || window.location.pathname.split("/")[2].toLowerCase();
-  const token = localStorage.getItem("token");
   const [tableList, setTableList] = useState([]);
   const [showDialog, setShowDialog] = useState(false);
   const [formSchema, setFormSchema] = useState({});
@@ -29,9 +28,7 @@ const Table = ({ manualPagination = true, target = null }) => {
   // get all data of table list from api
   const fetchTable = async () => {
     try {
-      return await instance.get(`${reference}?page=${currentPage}&rowsPerPage=${rowsPerPage}&keyword=${filterText}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      }).then((res) => {
+      return await instance.get(`${reference}?page=${currentPage}&rowsPerPage=${rowsPerPage}&keyword=${filterText}`).then((res) => {
         setTableList(res.data.restaurants);
         setTotalRows(res.data.count);
         setLoading(false);
@@ -96,7 +93,7 @@ const Table = ({ manualPagination = true, target = null }) => {
                         </div>
 
                       </div>
-                      <div class="">
+                      <div className="">
                         <Link to={`/admin/${reference}/${items._id}`} className="bg-orange-500 hover:bg-orange-400 font-extrabold text-white rounded-r-lg h-full p-8 flex items-center text-sm">
                           <HiOutlineExternalLink size={20} />
                         </Link>

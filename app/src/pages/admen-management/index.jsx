@@ -10,6 +10,8 @@ import { AuthContext } from "../../context/Auth";
 import { MENUITEMS } from './appendix/menu-items';
 import Restaurants from "./Restaurants";
 import RestaurantProfile from "./RestaurantProfile";
+import CategoriesMenu from "./CategoriesMenu";
+
 
 
 function Index() {
@@ -22,7 +24,10 @@ function Index() {
                     <Route path="/" element={<Outlet />}>
                         <Route path="/" element={<Home />} />
                         <Route path="/dashboard" element={<Dashboard />} />
+
+                        {/* Restaurant routes */}
                         <Route path="/restaurant" element={<Restaurants />} />
+                        <Route path="/restaurant/menu" element={<CategoriesMenu />} />
                         <Route path="/restaurant/*" element={<RestaurantProfile />} />
 
                     </Route>

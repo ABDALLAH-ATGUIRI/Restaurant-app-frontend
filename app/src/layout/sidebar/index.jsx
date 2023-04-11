@@ -29,7 +29,6 @@ const Sidebar = () => {
               onClick={() => { setOpen(!open); }} size={50} />
             {MENUITEMS.map((Menu, index) => (
               <Fragment key={index} >
-                {/* {index !== 0 && !open && <div class="border-t-2 w-5/6 ml-auto mr-auto mt-6 border-gray-500"></div>} */}
                 <li className={`pl-4 pb-2 mt-8`} >
                   <h2 className="font-semibold text-gray-600 text-sm uppercase ">{Menu.menutitle}</h2>
                 </li>
