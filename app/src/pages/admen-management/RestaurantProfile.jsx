@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { instance } from '../../utils/api/axios';
 import ProfileComponent from '../../components/restaurant-components/restaurentProfile';
 import MyMap from '../../components/global/MyMap';
-import EditModal from '../../components/FormModels/restaurant/editModel';
+// import EditModal from '../../components/FormModels/restaurant/editModel';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { MdOutlineMenuBook } from 'react-icons/md'
 import { HiOutlineExternalLink } from 'react-icons/hi';
@@ -81,7 +81,7 @@ const RestaurantProfile = () => {
                         </div>
                         <div className="w-full mx-2 h-64">
                             <div className="bg-white text-lg w-full h-full border-t-4 border-orange-400">
-                                <EditModal restaurant={restaurant} setTableList={setRestaurant} target={target} />
+                                {/* <EditModal restaurant={restaurant} setTableList={setRestaurant} target={target} /> */}
                             </div>
                         </div>
                     </div>

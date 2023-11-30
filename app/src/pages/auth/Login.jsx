@@ -72,7 +72,7 @@ export const Login = () => {
             }));
 
             setTimeout(() => {
-                decoded?.role === "admin" ? navigate("/admin", { replace: true }) : navigate("/restaurant-management", { replace: true });
+                decoded?.role === "admin" ? navigate("/admin/dashboard", { replace: true }) : navigate("/client/dashboard", { replace: true });
             }, 850);
         } catch (error) {
             console.log(error);

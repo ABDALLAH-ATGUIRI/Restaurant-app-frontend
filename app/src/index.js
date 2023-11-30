@@ -19,16 +19,19 @@ root.render(
         <Routes>
           {/* routes of user */}
           <Route element={<RequireAuth />}>
+            
             <Route
-              path="/restaurant-management"
+              path="/client/*"
               element={<RestaurantDashboard />}
             />
+
           </Route>
 
           {/* routes of admin */}
           <Route element={<RequireAuthAdmin />}>
             <Route path="/admin/*" element={<AdminDashboard />} />
           </Route>
+
           <Route path="/login" element={<Login />} />
           <Route path="/signIn" element={<SignIn />} />
           <Route path="*" element={<App />} />

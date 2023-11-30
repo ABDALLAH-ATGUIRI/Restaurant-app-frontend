@@ -11,6 +11,7 @@ import { MENUITEMS } from './appendix/menu-items';
 import Restaurants from "./Restaurants";
 import RestaurantProfile from "./RestaurantProfile";
 import CategoriesMenu from "./CategoriesMenu";
+import { CategoryProducts } from "./CategoryProducts";
 
 
 
@@ -24,10 +25,9 @@ function Index() {
                     <Route path="/" element={<Outlet />}>
                         <Route path="/" element={<Home />} />
                         <Route path="/dashboard" element={<Dashboard />} />
-
                         {/* Restaurant routes */}
                         <Route path="/restaurant" element={<Restaurants />} />
-                        <Route path="/restaurant/:id/menu" element={<CategoriesMenu />} />
+                        <Route path="/restaurant/menu" element={<CategoriesMenu />} />
                         <Route path="/restaurant/:id" element={<RestaurantProfile />} />
 
                     </Route>
@@ -47,7 +47,7 @@ function AppWithStore({ children }) {
                 <div className="w-full duration-300 ease-in-out font-sans text-gray-900 flex" >
                     <Sidebar MenuItems={MENUITEMS} />
                     <div className="w-full flex-col ml-1" style={{ backgroundColor: lightGray }}>
-                        <Header title={"menu Category"} user={user} />
+                        <Header title={"Menu Catalog"} user={user} />
 
                         {children}
                         {/* <Footer /> */}

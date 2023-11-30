@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const HeroCategory = ({ title, description, image, index }) => {
@@ -10,7 +11,7 @@ export const HeroCategory = ({ title, description, image, index }) => {
                     <h1 className='text-2xl'>{title}</h1>
                     <div className='text-sm p-2 font-normal my-6'> <p>{description}</p></div>
                     <div className='flex flex-row'>
-                        <button className='bg-gray-100 text-sm rounded-2xl px-14 p-3 font-bold text-black'>View items</button>
+                        <Link to={title} className='bg-gray-100 text-sm rounded-2xl px-14 p-3 font-bold text-black'>View items </Link>
                     </div>
                 </div>
                 <div className='h-full relative w-full'>
@@ -57,7 +58,7 @@ transition: all 0.3s ease-in-out;
                     <h1 className='md:text-2xl text-sm mt-8'>{title}</h1>
                     <div className='md:text-sm text-xs py-4 font-normal my-2'> <p>{description}</p></div>
                     <div className='flex flex-row'>
-                        <button className='bg-gray-100 md:text-sm text-xs rounded-2xl md:px-10 px-4 p-2 font-bold text-black'>View items</button>
+                        <Link to={title} className='bg-gray-100 md:text-sm text-xs rounded-2xl md:px-10 px-4 p-2 font-bold text-black'>View items </Link>
                     </div>
                 </div>
             </Container>

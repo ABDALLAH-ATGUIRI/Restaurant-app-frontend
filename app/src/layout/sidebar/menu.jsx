@@ -8,6 +8,7 @@ export const MENUITEMS = [
         Items: [
             { path: `${process.env.PUBLIC_URL}/Dashboard`, icon: < FaHome size={22} />, type: 'link', active: false, title: 'Dashboard' },
             { path: `${process.env.PUBLIC_URL}/Candidates`, icon: <RiBriefcase4Fill size={22} />, type: 'link', active: false, title: 'Candidates' },
+            { path: `${process.env.PUBLIC_URL}/Restaurant/menu`, icon: <FaUserTimes size={22} />, type: 'link', active: false, title: 'Restaurant' },
             { path: `${process.env.PUBLIC_URL}/Users`, icon: <FaUsers size={22} />, type: 'link', active: false, title: 'Users' },
 
         ]

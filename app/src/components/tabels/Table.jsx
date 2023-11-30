@@ -1,10 +1,8 @@
-import React, { Fragment, useState, useEffect, useCallback } from "react";
-import axios from "axios";
-import { toast } from "react-hot-toast";
+import React, { Fragment, useState, useEffect } from "react";
 import Pagination from "../global/Pagination";
 import HeaderTable from "./HeaderTable";
 import { instance } from "../../utils/api/axios";
-import AddModal from "../FormModels/restaurant/addModal";
+// import AddModal from "../FormModels/restaurant/addModal";
 import { FilterComponent } from "../global/FilterComponent";
 import { Link } from "react-router-dom";
 import { HiOutlineExternalLink } from "react-icons/hi";
@@ -57,12 +55,12 @@ const Table = ({ manualPagination = true, target = null }) => {
             />
           </HeaderTable>
 
-          <AddModal
+          {/* <AddModal
             setFormSchema={setFormSchema}
             showDialog={showDialog}
             setShowDialog={setShowDialog}
             target={reference}
-          />
+          /> */}
 
           <div className="flex flex-col min-h-[80vh] mb-20">
             {tableList.length > 0 ? (

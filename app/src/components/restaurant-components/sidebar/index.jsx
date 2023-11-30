@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 // import SmallLogo from "../../assets/images/small-logo-wselect.png";
 import { lightGray } from "../../../utils/colors";
 import { DashboardButton } from "../../global/DashboardButton";
@@ -6,7 +6,6 @@ import { DashboardButton } from "../../global/DashboardButton";
 
 
 const Sidebar = ({ MenuItems }) => {
-  const id = window.location.href.split('/').pop();
   const [open, setOpen] = useState(false);
 
   return (

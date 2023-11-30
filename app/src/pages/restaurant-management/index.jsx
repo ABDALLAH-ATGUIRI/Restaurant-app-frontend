@@ -8,6 +8,7 @@ import Header from "../../components/restaurant-components/header";
 import CategoriesMenu from "../admen-management/CategoriesMenu";
 import { AuthContext } from "../../context/Auth";
 import { MENUITEMS } from "./appendix/menu-items";
+import { CategoryProducts } from "../admen-management/CategoryProducts";
 
 function Index() {
 
@@ -16,8 +17,9 @@ function Index() {
             <AppWithStore>
                 <Routes>
                     <Route path="/" element={<Outlet />}>
-                        <Route path="/" element={<CategoriesMenu />} />
-                        <Route path="dashboard" element={<Dashboard />} />
+                        <Route path="/dashboard" element={<CategoriesMenu />} />
+                        <Route path="/:category" element={<CategoryProducts />} />
+
                     </Route>
                 </Routes>
             </AppWithStore>
@@ -36,7 +38,7 @@ function AppWithStore({ children }) {
                 <div className="w-full duration-300 ease-in-out font-sans text-gray-900 flex" >
                     <Sidebar MenuItems={MENUITEMS} />
                     <div className="w-full flex-col" style={{ backgroundColor: lightGray }}>
-                        <Header title={"menu Category"} user={user} />
+                        <Header title={"menu Catalog"} user={user} />
                         {children}
                         {/* <Footer /> */}
                     </div>

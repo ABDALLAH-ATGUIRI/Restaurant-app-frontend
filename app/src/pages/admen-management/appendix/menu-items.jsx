@@ -7,8 +7,9 @@ export const MENUITEMS = [
         menutitle: "General",
         menucontent: "Dashboards,Widgets",
         Items: [
-            { path: `dashboard-admin`, icon: < AiOutlineHome size={30} />, type: 'link', active: false, title: 'Dashboard' },
+            { path: `dashboard`, icon: < AiOutlineHome size={30} />, type: 'link', active: false, title: 'Dashboard' },
             { path: `restaurant`, icon: <IoRestaurantOutline size={30} />, type: 'link', active: false, title: 'Restaurant' },
+            { path: `restaurant/menu`, icon: <IoRestaurantOutline size={30} />, type: 'link', active: false, title: 'Restaurant' },
             { path: `managers`, icon: <GrUserManager size={30} />, type: 'link', active: false, title: 'Managers' },
 
 

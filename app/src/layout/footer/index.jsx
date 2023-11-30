@@ -8,7 +8,7 @@ import { TiSocialGithub } from 'react-icons/ti'
 const Footer = () => {
     return (
 
-        <footer className=" bg-white shadow pb-10 p-6 h-[60vh] w-full" style={{ backgroundColor: lightGray }}>
+        <footer className=" bg-white shadow p-2 h-[30rem] w-full" style={{ backgroundColor: lightGray }}>
             <div className=" flex  md:p-10 p-4 md:flex-col md:items-center md:justify-between h-full w-full text-gray-400 dark:text-gray-400 ">
                 <div>
                     <a href="#" >
